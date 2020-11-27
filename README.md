@@ -22,7 +22,7 @@ context.log.info('Immediate message', zlogDetails({ immediate: true }));
 
 [npm-image]: https://img.shields.io/npm/v/@hatsy/log-z-request.svg?logo=npm
 [npm-url]: https://www.npmjs.com/package/@hatsy/log-z-request
-[build-status-img]: https://github.com/hatsyjs/log-z-request:Build/badge.svg
+[build-status-img]: https://github.com/hatsyjs/log-z-request/workflows/Build/badge.svg
 [build-status-link]: https://github.com/hatsyjs/log-z-request/actions?query=workflow:Build
 [codecov-image]: https://codecov.io/gh/hatsyjs/log-z-request/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/hatsyjs/log-z-request
