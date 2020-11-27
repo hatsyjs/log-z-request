@@ -1,0 +1,16 @@
+{
+  "disableAutoModuleName": true,
+  "exclude": [
+    "**/index.ts",
+    "**/*.impl.ts",
+    "**/impl/**/*.ts",
+    "**/spec/**/*.ts",
+    "**/*.spec.ts"
+  ],
+  "excludeNotExported": true,
+  "mode": "file",
+  "theme": "minimal",
+  "name": "Hatsy request logger",
+  "out": "./target/typedoc",
+  "tsconfig": "tsconfig.main.json"
+}
