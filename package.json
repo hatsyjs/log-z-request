@@ -24,11 +24,11 @@
     "@proc7ts/primitives": "^1.5.1"
   },
   "peerDependencies": {
-    "@hatsy/hatsy": "^2.0.2",
+    "@hatsy/hatsy": "^2.1.0",
     "@run-z/log-z": "^1.2.1"
   },
   "devDependencies": {
-    "@hatsy/hatsy": "^2.0.2",
+    "@hatsy/hatsy": "^2.1.0",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "@run-z/eslint-config": "^1.1.0",
