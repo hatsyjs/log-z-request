@@ -12,7 +12,7 @@ import { logZRequest } from './request.log.impl';
 /**
  * Logger configuration.
  *
- * @typeParam TInput  A type of incoming request processing means.
+ * @typeParam TInput - A type of incoming request processing means.
  */
 export interface RequestZLogConfig<TInput = unknown> {
 
@@ -76,7 +76,7 @@ export interface RequestZLogConfig<TInput = unknown> {
  * context.log.info('Immediate message', zlogDetails({ immediate: true }));
  * ```
  *
- * @typeParam TInput  A type of request processing means required in order to apply this capability.
+ * @typeParam TInput - A type of request processing means required in order to apply this capability.
  */
 export interface ZLogging<TInput = unknown> extends RequestCapability<TInput, LoggerMeans<ZLogger>> {
 
