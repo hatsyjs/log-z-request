@@ -31,7 +31,7 @@
     "@hatsy/hatsy": "^2.1.0",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
-    "@run-z/eslint-config": "^1.1.0",
+    "@run-z/eslint-config": "^1.2.0",
     "@run-z/log-z": "^1.2.1",
     "@run-z/rollup-helpers": "^1.0.0",
     "@types/jest": "^26.0.19",
