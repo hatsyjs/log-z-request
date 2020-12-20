@@ -41,8 +41,8 @@ export interface RequestZLogConfig<TInput = unknown> {
    *
    * The logging is ended after request completion.
    *
-   * @param logger  Global log recorder.
-   * @param context  Request processing context to build the logger for.
+   * @param logger - Global log recorder.
+   * @param context - Request processing context to build the logger for.
    *
    * @returns A log recorder to use to log request processing messages.
    */
@@ -53,7 +53,7 @@ export interface RequestZLogConfig<TInput = unknown> {
    *
    * Logs the error as is by default.
    *
-   * @param context  Error processing context with logger means.
+   * @param context - Error processing context with logger means.
    *
    * @returns Either nothing if error logged synchronously, or a promise-like instance resolved when error logged
    * asynchronously.
@@ -83,7 +83,7 @@ export interface ZLogging<TInput = unknown> extends RequestCapability<TInput, Lo
   /**
    * Configures request logging.
    *
-   * @param config  New request logging configuration.
+   * @param config - New request logging configuration.
    *
    * @returns A logging capability with the given configuration applied.
    */
