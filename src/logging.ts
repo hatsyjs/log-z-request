@@ -65,7 +65,7 @@ export interface RequestZLogConfig<TInput = unknown> {
 /**
  * Request logging capability via [@run-z/log-z](https://www.npmjs.com/package/@run-z/log-z).
  *
- * Provides {@link LoggerMeans request logger means} containing `ZLogger` instance for handlers.
+ * Provides request logger means containing `ZLogger` instance for handlers.
  *
  * The log messages are actually written to the log under certain conditions. E.g. when request processing error
  * occurred, error logged, or immediate logging triggered explicitly. Once immediate logging triggered, all log
