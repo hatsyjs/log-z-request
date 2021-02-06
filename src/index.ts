@@ -1,5 +1,5 @@
 /**
  * @packageDocumentation
- * @module @hatsy/log-z-request
+ * @module Module @hatsy/log-z-request
  */
 export * from './logging';

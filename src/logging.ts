@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @hatsy/log-z-request
- */
 import type { ErrorMeans, LoggerMeans, RequestContext, RequestHandler } from '@hatsy/hatsy/core';
 import { RequestCapability, requestExtension } from '@hatsy/hatsy/core';
 import type { ZLogger, ZLogLevel, ZLogRecorder } from '@run-z/log-z';
