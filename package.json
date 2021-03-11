@@ -1,6 +1,6 @@
 {
   "name": "@hatsy/log-z-request",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "Hatsy request logger",
   "homepage": "https://github.com/hatsyjs/log-z-request",
   "repository": {
