@@ -39,6 +39,9 @@ export default {
         flatDts({
           tsconfig: 'tsconfig.main.json',
           lib: true,
+          compilerOptions: {
+            declarationMap: true,
+          },
         }),
       ],
     },
