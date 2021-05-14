@@ -21,7 +21,7 @@
     "require": "./dist/log-z-request.cjs"
   },
   "dependencies": {
-    "@proc7ts/primitives": "^2.0.0"
+    "@proc7ts/primitives": "^2.1.0"
   },
   "peerDependencies": {
     "@hatsy/hatsy": "^2.2.0",
