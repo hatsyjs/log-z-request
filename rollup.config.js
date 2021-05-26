@@ -21,29 +21,20 @@ export default {
     sourcemaps(),
   ],
   external: externalModules(),
-  output: [
-    {
-      dir: 'dist',
-      format: 'cjs',
-      sourcemap: true,
-      entryFileNames: '[name].cjs',
-      chunkFileNames: '_[name].cjs',
-    },
-    {
-      dir: '.',
-      format: 'esm',
-      sourcemap: true,
-      entryFileNames: 'dist/[name].js',
-      chunkFileNames: 'dist/_[name].js',
-      plugins: [
-        flatDts({
-          tsconfig: 'tsconfig.main.json',
-          lib: true,
-          compilerOptions: {
-            declarationMap: true,
-          },
-        }),
-      ],
-    },
-  ],
+  output: {
+    dir: '.',
+    format: 'esm',
+    sourcemap: true,
+    entryFileNames: 'dist/[name].js',
+    chunkFileNames: 'dist/_[name].js',
+    plugins: [
+      flatDts({
+        tsconfig: 'tsconfig.main.json',
+        lib: true,
+        compilerOptions: {
+          declarationMap: true,
+        },
+      }),
+    ],
+  },
 };
