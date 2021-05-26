@@ -1,15 +1,17 @@
 import type { RequestContext, RequestProcessor } from '@hatsy/hatsy/core';
 import { LoggerMeans, RequestHandler, requestProcessor } from '@hatsy/hatsy/core';
+import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { asis, newPromiseResolver, noop, valueProvider } from '@proc7ts/primitives';
 import type { ZLogger, ZLogRecorder } from '@run-z/log-z';
 import { zlogDetails, zlogINFO, ZLogLevel } from '@run-z/log-z';
+import type { SpyInstance } from 'jest-mock';
 import type { RequestZLogConfig } from './logging';
 import { ZLogging } from './logging';
 
 describe('ZLogging', () => {
 
-  let infoSpy: jest.SpyInstance;
-  let errorSpy: jest.SpyInstance;
+  let infoSpy: SpyInstance<void, any[]>;
+  let errorSpy: SpyInstance<void, any[]>;
 
   beforeEach(() => {
     infoSpy = jest.spyOn(console, 'info').mockImplementation(noop);
@@ -100,7 +102,7 @@ describe('ZLogging', () => {
       const handler: RequestHandler<LoggerMeans<ZLogger>> = () => {
         throw error;
       };
-      const logError = jest.fn();
+      const logError = jest.fn<void, [RequestContext<LoggerMeans<ZLogger>>]>();
 
       expect(await processor(handler, { logError })({}).catch(asis)).toBe(error);
       expect(logError).toHaveBeenCalledWith(expect.objectContaining({ error }));
@@ -111,7 +113,7 @@ describe('ZLogging', () => {
   describe('by', () => {
     it('logs errors', async () => {
 
-      const by: jest.Mocked<ZLogRecorder> = {
+      const by: ZLogRecorder = {
         record: jest.fn(),
         whenLogged: jest.fn(() => Promise.resolve(true)),
         end: jest.fn(() => Promise.resolve()),
@@ -144,7 +146,7 @@ describe('ZLogging', () => {
     });
     it('is called automatically upon request completion', async () => {
 
-      const by: jest.Mocked<ZLogRecorder> = {
+      const by: ZLogRecorder = {
         record: jest.fn(),
         whenLogged: jest.fn(() => Promise.resolve(true)),
         end: jest.fn(() => Promise.resolve()),
