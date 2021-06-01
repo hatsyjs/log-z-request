@@ -3,6 +3,8 @@ Log That Request
 
 [![NPM][npm-image]][npm-url]
 [![Build Status][build-status-img]][build-status-link]
+[![Code Quality][quality-img]][quality-link]
+[![Coverage][coverage-img]][coverage-link]
 [![GitHub Project][github-image]][github-url]
 [![API Documentation][api-docs-image]][API documentation]
 
@@ -23,6 +25,10 @@ context.log.info('Immediate message', zlogDetails({ immediate: true }));
 [npm-url]: https://www.npmjs.com/package/@hatsy/log-z-request
 [build-status-img]: https://github.com/hatsyjs/log-z-request/workflows/Build/badge.svg
 [build-status-link]: https://github.com/hatsyjs/log-z-request/actions?query=workflow:Build
+[quality-img]: https://app.codacy.com/project/badge/Grade/92ac3a82e01347aaa57cb858a3e0811c
+[quality-link]: https://www.codacy.com/gh/hatsyjs/log-z-request/dashboard?utm_source=github.com&utm_medium=referral&utm_content=hatsyjs/log-z-request&utm_campaign=Badge_Grade
+[coverage-img]: https://app.codacy.com/project/badge/Coverage/92ac3a82e01347aaa57cb858a3e0811c
+[coverage-link]: https://www.codacy.com/gh/hatsyjs/log-z-request/dashboard?utm_source=github.com&utm_medium=referral&utm_content=hatsyjs/log-z-request&utm_campaign=Badge_Coverage
 [github-image]: https://img.shields.io/static/v1?logo=github&label=GitHub&message=project&color=informational
 [github-url]: https://github.com/hatsyjs/log-z-request
 [api-docs-image]: https://img.shields.io/static/v1?logo=typescript&label=API&message=docs&color=informational
