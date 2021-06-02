@@ -43,8 +43,8 @@ describe('ZLogging', () => {
     whenLogged2.resolve(true);
     await promise;
 
-    expect(infoSpy).toHaveBeenCalledWith('Info');
-    expect(errorSpy).toHaveBeenCalledWith('Error');
+    expect(infoSpy).toHaveBeenCalledWith('%O', 'Info');
+    expect(errorSpy).toHaveBeenCalledWith('%O', 'Error');
   });
   it('allows to trigger immediate logging', async () => {
 
@@ -67,8 +67,8 @@ describe('ZLogging', () => {
     whenLogged2.resolve(true);
     await promise;
 
-    expect(infoSpy).toHaveBeenCalledWith('Deferred');
-    expect(infoSpy).toHaveBeenCalledWith('Immediate');
+    expect(infoSpy).toHaveBeenCalledWith('%O', 'Deferred');
+    expect(infoSpy).toHaveBeenCalledWith('%O', 'Immediate');
   });
   it('triggers immediate logging on error', async () => {
 
@@ -91,8 +91,8 @@ describe('ZLogging', () => {
     whenError.reject(error);
     expect(await promise.catch(asis)).toBe(error);
 
-    expect(infoSpy).toHaveBeenCalledWith('Deferred');
-    expect(errorSpy).toHaveBeenCalledWith(error);
+    expect(infoSpy).toHaveBeenCalledWith('%O', 'Deferred');
+    expect(errorSpy).toHaveBeenCalledWith('%O', error);
   });
 
   describe('logError', () => {
