@@ -10,8 +10,8 @@ import { ZLogging } from './logging';
 
 describe('ZLogging', () => {
 
-  let infoSpy: SpyInstance<void, any[]>;
-  let errorSpy: SpyInstance<void, any[]>;
+  let infoSpy: SpyInstance<void, unknown[]>;
+  let errorSpy: SpyInstance<void, unknown[]>;
 
   beforeEach(() => {
     infoSpy = jest.spyOn(console, 'info').mockImplementation(noop);
@@ -43,8 +43,8 @@ describe('ZLogging', () => {
     whenLogged2.resolve(true);
     await promise;
 
-    expect(infoSpy).toHaveBeenCalledWith('%O', 'Info');
-    expect(errorSpy).toHaveBeenCalledWith('%O', 'Error');
+    expect(infoSpy).toHaveBeenCalledWith('%s', 'Info');
+    expect(errorSpy).toHaveBeenCalledWith('%s', 'Error');
   });
   it('allows to trigger immediate logging', async () => {
 
@@ -67,8 +67,8 @@ describe('ZLogging', () => {
     whenLogged2.resolve(true);
     await promise;
 
-    expect(infoSpy).toHaveBeenCalledWith('%O', 'Deferred');
-    expect(infoSpy).toHaveBeenCalledWith('%O', 'Immediate');
+    expect(infoSpy).toHaveBeenCalledWith('%s', 'Deferred');
+    expect(infoSpy).toHaveBeenCalledWith('%s', 'Immediate');
   });
   it('triggers immediate logging on error', async () => {
 
@@ -91,8 +91,8 @@ describe('ZLogging', () => {
     whenError.reject(error);
     expect(await promise.catch(asis)).toBe(error);
 
-    expect(infoSpy).toHaveBeenCalledWith('%O', 'Deferred');
-    expect(errorSpy).toHaveBeenCalledWith('%O', error);
+    expect(infoSpy).toHaveBeenCalledWith('%s', 'Deferred');
+    expect(errorSpy).toHaveBeenCalledWith('%s', error);
   });
 
   describe('logError', () => {
