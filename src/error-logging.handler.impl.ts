@@ -1,7 +1,7 @@
 import type { ErrorMeans, LoggerMeans, RequestContext, RequestHandler } from '@hatsy/hatsy/core';
 import { requestExtension } from '@hatsy/hatsy/core';
 import type { ZLogger } from '@run-z/log-z';
-import { zlogDetails, zlogError } from '@run-z/log-z';
+import { zlogDetails } from '@run-z/log-z';
 import type { RequestZLogConfig } from './logging';
 
 /**
@@ -32,5 +32,5 @@ export function errorLoggingHandler<TInput>(
 function logImmediately(
     { error, log }: RequestContext<LoggerMeans<ZLogger> & ErrorMeans>,
 ): void {
-  log.error(zlogError(error), zlogDetails({ immediate: true }));
+  log.error(zlogDetails({ error, immediate: true }));
 }
