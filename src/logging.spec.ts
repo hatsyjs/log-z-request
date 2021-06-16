@@ -1,9 +1,10 @@
 import type { RequestContext, RequestProcessor } from '@hatsy/hatsy/core';
 import { LoggerMeans, RequestHandler, requestProcessor } from '@hatsy/hatsy/core';
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
+import { consoleLogger, processingLogger } from '@proc7ts/logger';
 import { asis, newPromiseResolver, noop, valueProvider } from '@proc7ts/primitives';
 import type { ZLogger, ZLogRecorder } from '@run-z/log-z';
-import { zlogDetails, zlogINFO, ZLogLevel } from '@run-z/log-z';
+import { logZToLogger, zlogDetails, zlogINFO, ZLogLevel } from '@run-z/log-z';
 import type { SpyInstance } from 'jest-mock';
 import type { RequestZLogConfig } from './logging';
 import { ZLogging } from './logging';
@@ -14,8 +15,8 @@ describe('ZLogging', () => {
   let errorSpy: SpyInstance<void, unknown[]>;
 
   beforeEach(() => {
-    infoSpy = jest.spyOn(console, 'info').mockImplementation(noop);
-    errorSpy = jest.spyOn(console, 'error').mockImplementation(noop);
+    infoSpy = jest.spyOn(consoleLogger, 'info').mockImplementation(noop);
+    errorSpy = jest.spyOn(consoleLogger, 'error').mockImplementation(noop);
   });
   afterEach(() => {
     infoSpy.mockRestore();
@@ -43,8 +44,8 @@ describe('ZLogging', () => {
     whenLogged2.resolve(true);
     await promise;
 
-    expect(infoSpy).toHaveBeenCalledWith('%s', 'Info');
-    expect(errorSpy).toHaveBeenCalledWith('%s', 'Error');
+    expect(infoSpy).toHaveBeenCalledWith('Info');
+    expect(errorSpy).toHaveBeenCalledWith('Error');
   });
   it('allows to trigger immediate logging', async () => {
 
@@ -67,8 +68,8 @@ describe('ZLogging', () => {
     whenLogged2.resolve(true);
     await promise;
 
-    expect(infoSpy).toHaveBeenCalledWith('%s', 'Deferred');
-    expect(infoSpy).toHaveBeenCalledWith('%s', 'Immediate');
+    expect(infoSpy).toHaveBeenCalledWith('Deferred');
+    expect(infoSpy).toHaveBeenCalledWith('Immediate');
   });
   it('triggers immediate logging on error', async () => {
 
@@ -80,7 +81,7 @@ describe('ZLogging', () => {
       await whenError.promise();
     };
 
-    const promise = processor(handler)({});
+    const promise = processor(handler, { by: logZToLogger(processingLogger(consoleLogger)) })({});
 
     await whenLogged.promise();
 
@@ -91,8 +92,8 @@ describe('ZLogging', () => {
     whenError.reject(error);
     expect(await promise.catch(asis)).toBe(error);
 
-    expect(infoSpy).toHaveBeenCalledWith('%s', 'Deferred');
-    expect(errorSpy).toHaveBeenCalledWith('%s', error);
+    expect(infoSpy).toHaveBeenCalledWith('Deferred');
+    expect(errorSpy).toHaveBeenCalledWith(error);
   });
 
   describe('logError', () => {

@@ -47,7 +47,7 @@ export interface RequestZLogConfig<TInput = unknown> {
   /**
    * Logs an error occurred during error processing.
    *
-   * Logs the error as is by default.
+   * Logs the error as an `error` detail.
    *
    * @param context - Error processing context with logger means.
    *
