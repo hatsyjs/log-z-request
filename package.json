@@ -2,6 +2,10 @@
   "name": "@hatsy/log-z-request",
   "version": "3.0.0",
   "description": "Hatsy request logger",
+  "keywords": [
+    "http-middleware",
+    "request-logging"
+  ],
   "homepage": "https://github.com/hatsyjs/log-z-request",
   "repository": {
     "type": "git",
