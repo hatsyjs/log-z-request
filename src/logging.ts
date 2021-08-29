@@ -20,14 +20,14 @@ export interface RequestZLogConfig<TInput = unknown> {
    *
    * @default Error level.
    */
-  readonly immediate?: ZLogLevel;
+  readonly immediate?: ZLogLevel | undefined;
 
   /**
    * A log recorded to log messages by.
    *
    * @default Console log recorder.
    */
-  readonly by?: ZLogRecorder;
+  readonly by?: ZLogRecorder | undefined;
 
   /**
    * Builds a logger for the request.

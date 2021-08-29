@@ -5,7 +5,7 @@ import type { RequestZLogConfig } from './logging';
 /**
  * @internal
  */
-export function logZRequest(config: RequestZLogConfig, by: ZLogRecorder): ZLogRecorder {
+export function logZRequest<TInput>(config: RequestZLogConfig<TInput>, by: ZLogRecorder): ZLogRecorder {
 
   const { immediate = ZLogLevel.Error } = config;
   const recorded: ZLogMessage[] = [];
