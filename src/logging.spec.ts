@@ -173,6 +173,7 @@ describe('ZLogging', () => {
       handler: ZLogging.with(config).for(handler),
       async next<TExt>(handler: RequestHandler<TExt>, context: RequestContext<TExt>): Promise<boolean> {
         await handler(context);
+
         return true;
       },
     });

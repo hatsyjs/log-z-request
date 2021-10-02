@@ -41,6 +41,7 @@ export function logZRequest<TInput>(config: RequestZLogConfig<TInput>, by: ZLogR
     record = by.record.bind(by);
     whenLogged = by.whenLogged.bind(by);
     end = () => by.end();
+
     return end();
   };
 

@@ -22,6 +22,7 @@ export function errorLoggingHandler<TInput>(
             logError,
             requestExtension<TInput & LoggerMeans<ZLogger>, ErrorMeans>({ error }),
         );
+
         return Promise.reject(error);
       });
 }
