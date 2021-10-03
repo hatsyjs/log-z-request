@@ -1,163 +1,25 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Hatsy request logger</title>
-	<meta name="description" content="Documentation for Hatsy request logger">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<script async src="assets/js/search.js" id="search-script"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">Hatsy request logger</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<h1>Hatsy request logger</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#log-that-request" id="log-that-request" style="color: inherit; text-decoration: none;">
-					<h1>Log That Request</h1>
-				</a>
-				<p><a href="https://www.npmjs.com/package/@hatsy/log-z-request"><img src="https://img.shields.io/npm/v/@hatsy/log-z-request.svg?logo=npm" alt="NPM"></a>
-					<a href="https://github.com/hatsyjs/log-z-request/actions?query=workflow:Build"><img src="https://github.com/hatsyjs/log-z-request/workflows/Build/badge.svg" alt="Build Status"></a>
-					<a href="https://www.codacy.com/gh/hatsyjs/log-z-request/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hatsyjs/log-z-request&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/92ac3a82e01347aaa57cb858a3e0811c" alt="Code Quality"></a>
-					<a href="https://www.codacy.com/gh/hatsyjs/log-z-request/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hatsyjs/log-z-request&amp;utm_campaign=Badge_Coverage"><img src="https://app.codacy.com/project/badge/Coverage/92ac3a82e01347aaa57cb858a3e0811c" alt="Coverage"></a>
-					<a href="https://github.com/hatsyjs/log-z-request"><img src="https://img.shields.io/static/v1?logo=github&label=GitHub&message=project&color=informational" alt="GitHub Project"></a>
-				<a href="https://hatsyjs.github.io/log-z-request"><img src="https://img.shields.io/static/v1?logo=typescript&label=API&message=docs&color=informational" alt="API Documentation"></a></p>
-				<p>Request logging by <a href="https://www.npmjs.com/package/@run-z/log-z">@run-z/log-z</a> logger.</p>
-				<p>Contains a <code>ZLogging</code> capability that provides a request logger means containing <code>ZLogger</code> instance for handlers.</p>
-				<p>The log messages are actually written to the log under certain conditions. E.g. when request processing error
-					occurred, error logged, or immediate logging triggered explicitly. Once immediate logging triggered, all log
-				messages for the log are recorded to the log, as well as all messages logged after that.</p>
-				<p>To trigger immediate logging add <code>immediate</code> property with truthy value to log message details like this:</p>
-				<pre><code class="language-typescript"><span style="color: #001080">context</span><span style="color: #000000">.</span><span style="color: #001080">log</span><span style="color: #000000">.</span><span style="color: #795E26">info</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;Immediate message&#039;</span><span style="color: #000000">, </span><span style="color: #795E26">zlogDetails</span><span style="color: #000000">({ </span><span style="color: #001080">immediate:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000"> }));</span>
+<!DOCTYPE html><html class="default no-js"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Hatsy request logger</title><meta name="description" content="Documentation for Hatsy request logger"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">Hatsy request logger</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>Hatsy request logger</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#log-that-request" id="log-that-request" style="color: inherit; text-decoration: none;">
+  <h1>Log That Request</h1>
+</a>
+<p><a href="https://www.npmjs.com/package/@hatsy/log-z-request"><img src="https://img.shields.io/npm/v/@hatsy/log-z-request.svg?logo=npm" alt="NPM"></a>
+<a href="https://github.com/hatsyjs/log-z-request/actions?query=workflow:Build"><img src="https://github.com/hatsyjs/log-z-request/workflows/Build/badge.svg" alt="Build Status"></a>
+<a href="https://www.codacy.com/gh/hatsyjs/log-z-request/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hatsyjs/log-z-request&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/92ac3a82e01347aaa57cb858a3e0811c" alt="Code Quality"></a>
+<a href="https://www.codacy.com/gh/hatsyjs/log-z-request/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hatsyjs/log-z-request&amp;utm_campaign=Badge_Coverage"><img src="https://app.codacy.com/project/badge/Coverage/92ac3a82e01347aaa57cb858a3e0811c" alt="Coverage"></a>
+<a href="https://github.com/hatsyjs/log-z-request"><img src="https://img.shields.io/static/v1?logo=github&label=GitHub&message=project&color=informational" alt="GitHub Project"></a>
+<a href="https://hatsyjs.github.io/log-z-request"><img src="https://img.shields.io/static/v1?logo=typescript&label=API&message=docs&color=informational" alt="API Documentation"></a></p>
+<p>Request logging by <a href="https://www.npmjs.com/package/@run-z/log-z">@run-z/log-z</a> logger.</p>
+<p>Contains a <code>ZLogging</code> capability that provides a request logger means containing <code>ZLogger</code> instance for handlers.</p>
+<p>The log messages are actually written to the log under certain conditions. E.g. when request processing error
+occurred, error logged, or immediate logging triggered explicitly. Once immediate logging triggered, all log
+messages for the log are recorded to the log, as well as all messages logged after that.</p>
+<p>To trigger immediate logging add <code>immediate</code> property with truthy value to log message details like this:</p>
+<pre><code class="language-typescript"><span class="hl-0">context</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">.</span><span class="hl-2">info</span><span class="hl-1">(</span><span class="hl-3">&#39;Immediate message&#39;</span><span class="hl-1">, </span><span class="hl-2">zlogDetails</span><span class="hl-1">({ </span><span class="hl-0">immediate:</span><span class="hl-1"> </span><span class="hl-4">true</span><span class="hl-1"> }));</span>
 </code></pre>
-				<a href="#example-setup" id="example-setup" style="color: inherit; text-decoration: none;">
-					<h2>Example Setup</h2>
-				</a>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">httpListener</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@hatsy/hatsy&#039;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">ZLogging</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@hatsy/log-z-request&#039;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Rendering</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@hatsy/router&#039;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">logZAtopOf</span><span style="color: #000000">, </span><span style="color: #001080">logZTimestamp</span><span style="color: #000000">, </span><span style="color: #001080">logZWithDetails</span><span style="color: #000000">, </span><span style="color: #001080">zlogDetails</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@run-z/log-z&#039;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">logZToStream</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@run-z/log-z/node&#039;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">createServer</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;http&#039;</span><span style="color: #000000">;</span>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">server</span><span style="color: #000000"> = </span><span style="color: #795E26">createServer</span><span style="color: #000000">(</span><span style="color: #795E26">httpListener</span><span style="color: #000000">(</span>
-<span style="color: #000000">    {</span>
-
-<span style="color: #000000">      </span><span style="color: #795E26">handleBy</span><span style="color: #000000">(</span><span style="color: #001080">handler</span><span style="color: #000000">) {</span>
-<span style="color: #000000">        </span><span style="color: #008000">// Set up logging before request processing.</span>
-<span style="color: #000000">        </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">ZLogging</span><span style="color: #000000">.</span><span style="color: #795E26">with</span><span style="color: #000000">({</span>
-
-<span style="color: #000000">          </span><span style="color: #001080">by:</span><span style="color: #000000"> </span><span style="color: #795E26">logZTimestamp</span><span style="color: #000000">(                </span><span style="color: #008000">// Log timestamp.</span>
-<span style="color: #000000">              </span><span style="color: #795E26">logZToStream</span><span style="color: #000000">(</span><span style="color: #001080">process</span><span style="color: #000000">.</span><span style="color: #001080">stdout</span><span style="color: #000000">), </span><span style="color: #008000">// Log to standard output.</span>
-<span style="color: #000000">          ),</span>
-
-<span style="color: #000000">          </span><span style="color: #795E26">forRequest</span><span style="color: #000000">(</span><span style="color: #001080">logger</span><span style="color: #000000">, { </span><span style="color: #001080">request</span><span style="color: #000000">: { </span><span style="color: #001080">method</span><span style="color: #000000">, </span><span style="color: #001080">url</span><span style="color: #000000"> } }) {</span>
-<span style="color: #000000">            </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #795E26">logZWithDetails</span><span style="color: #000000">(</span>
-<span style="color: #000000">                {</span>
-<span style="color: #000000">                  </span><span style="color: #001080">method</span><span style="color: #000000">,                   </span><span style="color: #008000">// Add request method to log message details.</span>
-<span style="color: #000000">                  </span><span style="color: #001080">url</span><span style="color: #000000">,                      </span><span style="color: #008000">// Add request URL to log message details. </span>
-<span style="color: #000000">                },</span>
-<span style="color: #000000">                </span><span style="color: #795E26">logZAtopOf</span><span style="color: #000000">(</span><span style="color: #001080">logger</span><span style="color: #000000">),         </span><span style="color: #008000">// Create child logger per request.</span>
-<span style="color: #000000">            );</span>
-<span style="color: #000000">          },</span>
-
-<span style="color: #000000">        }).</span><span style="color: #795E26">for</span><span style="color: #000000">(</span><span style="color: #001080">handler</span><span style="color: #000000">);</span>
-<span style="color: #000000">      },</span>
-
-<span style="color: #000000">    },</span>
-<span style="color: #000000">    </span><span style="color: #001080">Rendering</span><span style="color: #000000">.</span><span style="color: #795E26">for</span><span style="color: #000000">(({ </span><span style="color: #001080">log</span><span style="color: #000000">, </span><span style="color: #001080">renderJson</span><span style="color: #000000"> }) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
-<span style="color: #000000">      </span><span style="color: #008000">// Log immeditely instead of when error occurrred.</span>
-<span style="color: #000000">      </span><span style="color: #001080">log</span><span style="color: #000000">.</span><span style="color: #795E26">info</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;Hello!&#039;</span><span style="color: #000000">, </span><span style="color: #795E26">zlogDetails</span><span style="color: #000000">({ </span><span style="color: #001080">immediate:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000"> }));</span>
-<span style="color: #000000">      </span><span style="color: #795E26">renderJson</span><span style="color: #000000">({ </span><span style="color: #001080">hello:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;World!&#039;</span><span style="color: #000000"> });      </span>
-<span style="color: #000000">    }),</span>
-<span style="color: #000000">));</span>
+<a href="#example-setup" id="example-setup" style="color: inherit; text-decoration: none;">
+  <h2>Example Setup</h2>
+</a>
+<pre><code class="language-typescript"><span class="hl-5">import</span><span class="hl-1"> { </span><span class="hl-0">httpListener</span><span class="hl-1"> } </span><span class="hl-5">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@hatsy/hatsy&#39;</span><span class="hl-1">;</span><br/><span class="hl-5">import</span><span class="hl-1"> { </span><span class="hl-0">ZLogging</span><span class="hl-1"> } </span><span class="hl-5">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@hatsy/log-z-request&#39;</span><span class="hl-1">;</span><br/><span class="hl-5">import</span><span class="hl-1"> { </span><span class="hl-0">Rendering</span><span class="hl-1"> } </span><span class="hl-5">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@hatsy/router&#39;</span><span class="hl-1">;</span><br/><span class="hl-5">import</span><span class="hl-1"> { </span><span class="hl-0">logZAtopOf</span><span class="hl-1">, </span><span class="hl-0">logZTimestamp</span><span class="hl-1">, </span><span class="hl-0">logZWithDetails</span><span class="hl-1">, </span><span class="hl-0">zlogDetails</span><span class="hl-1"> } </span><span class="hl-5">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@run-z/log-z&#39;</span><span class="hl-1">;</span><br/><span class="hl-5">import</span><span class="hl-1"> { </span><span class="hl-0">logZToStream</span><span class="hl-1"> } </span><span class="hl-5">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@run-z/log-z/node&#39;</span><span class="hl-1">;</span><br/><span class="hl-5">import</span><span class="hl-1"> { </span><span class="hl-0">createServer</span><span class="hl-1"> } </span><span class="hl-5">from</span><span class="hl-1"> </span><span class="hl-3">&#39;http&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-6">server</span><span class="hl-1"> = </span><span class="hl-2">createServer</span><span class="hl-1">(</span><span class="hl-2">httpListener</span><span class="hl-1">(</span><br/><span class="hl-1">    {</span><br/><br/><span class="hl-1">      </span><span class="hl-2">handleBy</span><span class="hl-1">(</span><span class="hl-0">handler</span><span class="hl-1">) {</span><br/><span class="hl-1">        </span><span class="hl-7">// Set up logging before request processing.</span><br/><span class="hl-1">        </span><span class="hl-5">return</span><span class="hl-1"> </span><span class="hl-0">ZLogging</span><span class="hl-1">.</span><span class="hl-2">with</span><span class="hl-1">({</span><br/><br/><span class="hl-1">          </span><span class="hl-0">by:</span><span class="hl-1"> </span><span class="hl-2">logZTimestamp</span><span class="hl-1">(                </span><span class="hl-7">// Log timestamp.</span><br/><span class="hl-1">              </span><span class="hl-2">logZToStream</span><span class="hl-1">(</span><span class="hl-0">process</span><span class="hl-1">.</span><span class="hl-0">stdout</span><span class="hl-1">), </span><span class="hl-7">// Log to standard output.</span><br/><span class="hl-1">          ),</span><br/><br/><span class="hl-1">          </span><span class="hl-2">forRequest</span><span class="hl-1">(</span><span class="hl-0">logger</span><span class="hl-1">, { </span><span class="hl-0">request</span><span class="hl-1">: { </span><span class="hl-0">method</span><span class="hl-1">, </span><span class="hl-0">url</span><span class="hl-1"> } }) {</span><br/><span class="hl-1">            </span><span class="hl-5">return</span><span class="hl-1"> </span><span class="hl-2">logZWithDetails</span><span class="hl-1">(</span><br/><span class="hl-1">                {</span><br/><span class="hl-1">                  </span><span class="hl-0">method</span><span class="hl-1">,                   </span><span class="hl-7">// Add request method to log message details.</span><br/><span class="hl-1">                  </span><span class="hl-0">url</span><span class="hl-1">,                      </span><span class="hl-7">// Add request URL to log message details. </span><br/><span class="hl-1">                },</span><br/><span class="hl-1">                </span><span class="hl-2">logZAtopOf</span><span class="hl-1">(</span><span class="hl-0">logger</span><span class="hl-1">),         </span><span class="hl-7">// Create child logger per request.</span><br/><span class="hl-1">            );</span><br/><span class="hl-1">          },</span><br/><br/><span class="hl-1">        }).</span><span class="hl-2">for</span><span class="hl-1">(</span><span class="hl-0">handler</span><span class="hl-1">);</span><br/><span class="hl-1">      },</span><br/><br/><span class="hl-1">    },</span><br/><span class="hl-1">    </span><span class="hl-0">Rendering</span><span class="hl-1">.</span><span class="hl-2">for</span><span class="hl-1">(({ </span><span class="hl-0">log</span><span class="hl-1">, </span><span class="hl-0">renderJson</span><span class="hl-1"> }) </span><span class="hl-4">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">      </span><span class="hl-7">// Log immeditely instead of when error occurrred.</span><br/><span class="hl-1">      </span><span class="hl-0">log</span><span class="hl-1">.</span><span class="hl-2">info</span><span class="hl-1">(</span><span class="hl-3">&#39;Hello!&#39;</span><span class="hl-1">, </span><span class="hl-2">zlogDetails</span><span class="hl-1">({ </span><span class="hl-0">immediate:</span><span class="hl-1"> </span><span class="hl-4">true</span><span class="hl-1"> }));</span><br/><span class="hl-1">      </span><span class="hl-2">renderJson</span><span class="hl-1">({ </span><span class="hl-0">hello:</span><span class="hl-1"> </span><span class="hl-3">&#39;World!&#39;</span><span class="hl-1"> });      </span><br/><span class="hl-1">    }),</span><br/><span class="hl-1">));</span>
 </code></pre>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="modules.html">Exports</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/requestzlogconfig.html" class="tsd-kind-icon">RequestZLog<wbr>Config</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/zlogging.html" class="tsd-kind-icon">ZLogging</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="modules.html#zlogging" class="tsd-kind-icon">ZLogging</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/RequestZLogConfig.html" class="tsd-kind-icon">RequestZLog<wbr/>Config</a></li><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/ZLogging.html" class="tsd-kind-icon">ZLogging</a></li><li class="tsd-kind-variable"><a href="modules.html#ZLogging" class="tsd-kind-icon">ZLogging</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
