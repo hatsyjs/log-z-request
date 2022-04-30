@@ -1,12 +1,11 @@
-Log That Request
-================
+# Log That Request
 
 [![NPM][npm-image]][npm-url]
 [![Build Status][build-status-img]][build-status-link]
 [![Code Quality][quality-img]][quality-link]
 [![Coverage][coverage-img]][coverage-link]
 [![GitHub Project][github-image]][github-url]
-[![API Documentation][api-docs-image]][API documentation]
+[![API Documentation][api-docs-image]][api documentation]
 
 Request logging by [@run-z/log-z] logger.
 
@@ -17,6 +16,7 @@ occurred, error logged, or immediate logging triggered explicitly. Once immediat
 messages for the log are recorded to the log, as well as all messages logged after that.
 
 To trigger immediate logging add `immediate` property with truthy value to log message details like this:
+
 ```typescript
 context.log.info('Immediate message', zlogDetails({ immediate: true }));
 ```
@@ -32,13 +32,10 @@ context.log.info('Immediate message', zlogDetails({ immediate: true }));
 [github-image]: https://img.shields.io/static/v1?logo=github&label=GitHub&message=project&color=informational
 [github-url]: https://github.com/hatsyjs/log-z-request
 [api-docs-image]: https://img.shields.io/static/v1?logo=typescript&label=API&message=docs&color=informational
-[API documentation]: https://hatsyjs.github.io/log-z-request
-
+[api documentation]: https://hatsyjs.github.io/log-z-request
 [@run-z/log-z]: https://www.npmjs.com/package/@run-z/log-z
 
-
-Example Setup
--------------
+## Example Setup
 
 ```typescript
 import { httpListener } from '@hatsy/hatsy';
@@ -48,35 +45,34 @@ import { logZAtopOf, logZTimestamp, logZWithDetails, zlogDetails } from '@run-z/
 import { logZToStream } from '@run-z/log-z/node';
 import { createServer } from 'http';
 
-const server = createServer(httpListener(
+const server = createServer(
+  httpListener(
     {
-
       handleBy(handler) {
         // Set up logging before request processing.
         return ZLogging.with({
-
-          by: logZTimestamp(                // Log timestamp.
-              logZToStream(process.stdout), // Log to standard output.
+          by: logZTimestamp(
+            // Log timestamp.
+            logZToStream(process.stdout), // Log to standard output.
           ),
 
           forRequest(logger, { request: { method, url } }) {
             return logZWithDetails(
-                {
-                  method,                   // Add request method to log message details.
-                  url,                      // Add request URL to log message details. 
-                },
-                logZAtopOf(logger),         // Create child logger per request.
+              {
+                method, // Add request method to log message details.
+                url, // Add request URL to log message details.
+              },
+              logZAtopOf(logger), // Create child logger per request.
             );
           },
-
         }).for(handler);
       },
-
     },
     Rendering.for(({ log, renderJson }) => {
       // Log immeditely instead of when error occurrred.
       log.info('Hello!', zlogDetails({ immediate: true }));
-      renderJson({ hello: 'World!' });      
+      renderJson({ hello: 'World!' });
     }),
-));
+  ),
+);
 ```

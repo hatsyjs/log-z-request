@@ -13,17 +13,11 @@
     "importsNotUsedAsValues": "error",
     "noEmitHelpers": true,
     "allowSyntheticDefaultImports": true,
-    "lib": [
-      "ES2019"
-    ],
-    "types": [
-      "node"
-    ],
+    "lib": ["ES2019"],
+    "types": ["node"],
     "outDir": "target/js",
     "sourceMap": true,
     "newLine": "LF"
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }
