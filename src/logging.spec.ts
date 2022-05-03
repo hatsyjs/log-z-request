@@ -11,8 +11,8 @@ import { ZLogging } from './logging';
 
 describe('ZLogging', () => {
 
-  let infoSpy: SpyInstance<void, unknown[]>;
-  let errorSpy: SpyInstance<void, unknown[]>;
+  let infoSpy: SpyInstance<(...args: unknown[]) => void>;
+  let errorSpy: SpyInstance<(...args: unknown[]) => void>;
 
   beforeEach(() => {
     infoSpy = jest.spyOn(consoleLogger, 'info').mockImplementation(noop);
@@ -103,7 +103,7 @@ describe('ZLogging', () => {
       const handler: RequestHandler<LoggerMeans<ZLogger>> = () => {
         throw error;
       };
-      const logError = jest.fn<void, [RequestContext<LoggerMeans<ZLogger>>]>();
+      const logError = jest.fn<(context: RequestContext<LoggerMeans<ZLogger>>) => void>();
 
       expect(await processor(handler, { logError })({}).catch(asis)).toBe(error);
       expect(logError).toHaveBeenCalledWith(expect.objectContaining({ error }));
