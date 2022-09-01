@@ -11,7 +11,6 @@ import { logZRequest } from './request.log.impl';
  * @typeParam TInput - A type of incoming request processing means.
  */
 export interface RequestZLogConfig<TInput = unknown> {
-
   /**
    * A log level causing immediate logging.
    *
@@ -54,8 +53,9 @@ export interface RequestZLogConfig<TInput = unknown> {
    * @returns Either nothing if error logged synchronously, or a promise-like instance resolved when error logged
    * asynchronously.
    */
-  logError?(context: RequestContext<TInput & LoggerMeans<ZLogger> & ErrorMeans>): void | PromiseLike<unknown>;
-
+  logError?(
+    context: RequestContext<TInput & LoggerMeans<ZLogger> & ErrorMeans>,
+  ): void | PromiseLike<unknown>;
 }
 
 /**
@@ -74,8 +74,8 @@ export interface RequestZLogConfig<TInput = unknown> {
  *
  * @typeParam TInput - A type of request processing means required in order to apply this capability.
  */
-export interface ZLogging<TInput = unknown> extends RequestCapability<TInput, LoggerMeans<ZLogger>> {
-
+export interface ZLogging<TInput = unknown>
+  extends RequestCapability<TInput, LoggerMeans<ZLogger>> {
   /**
    * Configures request logging.
    *
@@ -84,18 +84,17 @@ export interface ZLogging<TInput = unknown> extends RequestCapability<TInput, Lo
    * @returns A logging capability with the given configuration applied.
    */
   with<TNewInput>(config?: RequestZLogConfig<TNewInput>): ZLogging<TNewInput>;
-
 }
 
 /**
  * @internal
  */
 class ZLoggingCapability<TInput>
-    extends RequestCapability<TInput, LoggerMeans<ZLogger>>
-    implements ZLogging<TInput> {
+  extends RequestCapability<TInput, LoggerMeans<ZLogger>>
+  implements ZLogging<TInput> {
 
   readonly for: <TMeans extends TInput>(
-      handler: RequestHandler<TMeans & LoggerMeans<ZLogger>>,
+    handler: RequestHandler<TMeans & LoggerMeans<ZLogger>>,
   ) => RequestHandler<TMeans>;
 
   constructor(config: RequestZLogConfig<TInput>) {
@@ -104,29 +103,23 @@ class ZLoggingCapability<TInput>
     const globalLogger = config.by ? logZBy(config.by) : logZ({ atLeast: 0 });
     const forRequest = config.forRequest ? config.forRequest.bind(config) : logZAtopOf;
 
-    this.for = <TMeans extends TInput>(
+    this.for
+      = <TMeans extends TInput>(
         handler: RequestHandler<TMeans & LoggerMeans<ZLogger>>,
-    ): RequestHandler<TMeans> => async context => {
+      ): RequestHandler<TMeans> => async context => {
+        const log = logZBy(
+          logZRequest(config, forRequest(globalLogger, context as RequestContext<TInput>)),
+        );
 
-      const log = logZBy(
-          logZRequest(
-              config,
-              forRequest(
-                  globalLogger,
-                  context as RequestContext<TInput>,
-              ),
-          ),
-      );
-
-      try {
-        await context.next(
+        try {
+          await context.next(
             errorLoggingHandler(config as RequestZLogConfig<TMeans>, handler),
             requestExtension<TMeans, LoggerMeans<ZLogger>>({ log }),
-        );
-      } finally {
-        await log.end();
-      }
-    };
+          );
+        } finally {
+          await log.end();
+        }
+      };
   }
 
   with<TNewInput>(config: RequestZLogConfig<TNewInput> = {}): ZLogging<TNewInput> {
@@ -142,4 +135,4 @@ class ZLoggingCapability<TInput>
  *
  * Triggers immediate logging on error.
  */
-export const ZLogging: ZLogging = (/*#__PURE__*/ new ZLoggingCapability({}));
+export const ZLogging: ZLogging = /*#__PURE__*/ new ZLoggingCapability({});

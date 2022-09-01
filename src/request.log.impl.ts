@@ -5,8 +5,10 @@ import type { RequestZLogConfig } from './logging';
 /**
  * @internal
  */
-export function logZRequest<TInput>(config: RequestZLogConfig<TInput>, by: ZLogRecorder): ZLogRecorder {
-
+export function logZRequest<TInput>(
+  config: RequestZLogConfig<TInput>,
+  by: ZLogRecorder,
+): ZLogRecorder {
   const { immediate = ZLogLevel.Error } = config;
   const recorded: ZLogMessage[] = [];
 
@@ -24,7 +26,7 @@ export function logZRequest<TInput>(config: RequestZLogConfig<TInput>, by: ZLogR
     }
   };
 
-  let whenLogged = (_which?: ('all' | 'last')): Promise<boolean> => Promise.resolve(true);
+  let whenLogged = (_which?: 'all' | 'last'): Promise<boolean> => Promise.resolve(true);
   let record = (message: ZLogMessage): void => {
     if (message.level >= immediate || message.details.immediate) {
       record = recordNow;
@@ -46,7 +48,6 @@ export function logZRequest<TInput>(config: RequestZLogConfig<TInput>, by: ZLogR
   };
 
   return {
-
     record(message) {
       record(message);
     },
@@ -58,6 +59,5 @@ export function logZRequest<TInput>(config: RequestZLogConfig<TInput>, by: ZLogR
     end() {
       return end();
     },
-
   };
 }

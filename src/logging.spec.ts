@@ -10,7 +10,6 @@ import type { RequestZLogConfig } from './logging';
 import { ZLogging } from './logging';
 
 describe('ZLogging', () => {
-
   let infoSpy: SpyInstance<(...args: unknown[]) => void>;
   let errorSpy: SpyInstance<(...args: unknown[]) => void>;
 
@@ -24,7 +23,6 @@ describe('ZLogging', () => {
   });
 
   it('logs nothing until error logged', async () => {
-
     const whenLogged1 = newPromiseResolver<boolean>();
     const whenLogged2 = newPromiseResolver<boolean>();
     const handler: RequestHandler<LoggerMeans<ZLogger>> = async ({ log }) => {
@@ -48,7 +46,6 @@ describe('ZLogging', () => {
     expect(errorSpy).toHaveBeenCalledWith('Error');
   });
   it('allows to trigger immediate logging', async () => {
-
     const whenLogged1 = newPromiseResolver<boolean>();
     const whenLogged2 = newPromiseResolver<boolean>();
     const handler: RequestHandler<LoggerMeans<ZLogger>> = async ({ log }) => {
@@ -72,7 +69,6 @@ describe('ZLogging', () => {
     expect(infoSpy).toHaveBeenCalledWith('Immediate');
   });
   it('triggers immediate logging on error', async () => {
-
     const whenLogged = newPromiseResolver<boolean>();
     const whenError = newPromiseResolver();
     const handler: RequestHandler<LoggerMeans<ZLogger>> = async ({ log }) => {
@@ -98,7 +94,6 @@ describe('ZLogging', () => {
 
   describe('logError', () => {
     it('is called on error', async () => {
-
       const error = new Error('Test');
       const handler: RequestHandler<LoggerMeans<ZLogger>> = () => {
         throw error;
@@ -113,7 +108,6 @@ describe('ZLogging', () => {
 
   describe('by', () => {
     it('logs errors', async () => {
-
       const by: ZLogRecorder = {
         record: jest.fn(),
         whenLogged: jest.fn(() => Promise.resolve(true)),
@@ -134,7 +128,6 @@ describe('ZLogging', () => {
 
   describe('end', () => {
     it('stops logging', async () => {
-
       const handler: RequestHandler<LoggerMeans<ZLogger>> = async ({ log }) => {
         await log.end();
         log.error('Message 1', zlogDetails({ immediate: true }));
@@ -146,7 +139,6 @@ describe('ZLogging', () => {
       expect(errorSpy).not.toHaveBeenCalled();
     });
     it('is called automatically upon request completion', async () => {
-
       const by: ZLogRecorder = {
         record: jest.fn(),
         whenLogged: jest.fn(() => Promise.resolve(true)),
@@ -166,17 +158,19 @@ describe('ZLogging', () => {
   });
 
   function processor(
-      handler: RequestHandler<LoggerMeans<ZLogger>>,
-      config?: RequestZLogConfig,
+    handler: RequestHandler<LoggerMeans<ZLogger>>,
+    config?: RequestZLogConfig,
   ): RequestProcessor<object> {
     return requestProcessor({
       handler: ZLogging.with(config).for(handler),
-      async next<TExt>(handler: RequestHandler<TExt>, context: RequestContext<TExt>): Promise<boolean> {
+      async next<TExt>(
+        handler: RequestHandler<TExt>,
+        context: RequestContext<TExt>,
+      ): Promise<boolean> {
         await handler(context);
 
         return true;
       },
     });
   }
-
 });
