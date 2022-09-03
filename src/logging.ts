@@ -103,8 +103,8 @@ class ZLoggingCapability<TInput>
     const globalLogger = config.by ? logZBy(config.by) : logZ({ atLeast: 0 });
     const forRequest = config.forRequest ? config.forRequest.bind(config) : logZAtopOf;
 
-    this.for
-      = <TMeans extends TInput>(
+    this.for =
+      <TMeans extends TInput>(
         handler: RequestHandler<TMeans & LoggerMeans<ZLogger>>,
       ): RequestHandler<TMeans> => async context => {
         const log = logZBy(
