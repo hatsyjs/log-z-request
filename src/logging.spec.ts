@@ -5,17 +5,17 @@ import { consoleLogger, processingLogger } from '@proc7ts/logger';
 import { asis, newPromiseResolver, noop, valueProvider } from '@proc7ts/primitives';
 import type { ZLogger, ZLogRecorder } from '@run-z/log-z';
 import { logZToLogger, zlogDetails, zlogINFO, ZLogLevel } from '@run-z/log-z';
-import type { SpyInstance } from 'jest-mock';
+import type { Mock } from 'jest-mock';
 import type { RequestZLogConfig } from './logging';
 import { ZLogging } from './logging';
 
 describe('ZLogging', () => {
-  let infoSpy: SpyInstance<(...args: unknown[]) => void>;
-  let errorSpy: SpyInstance<(...args: unknown[]) => void>;
+  let infoSpy: Mock<(...args: unknown[]) => void>;
+  let errorSpy: Mock<(...args: unknown[]) => void>;
 
   beforeEach(() => {
-    infoSpy = jest.spyOn(consoleLogger, 'info').mockImplementation(noop);
-    errorSpy = jest.spyOn(consoleLogger, 'error').mockImplementation(noop);
+    infoSpy = jest.spyOn(consoleLogger, 'info').mockImplementation(noop) as typeof infoSpy;
+    errorSpy = jest.spyOn(consoleLogger, 'error').mockImplementation(noop) as typeof errorSpy;
   });
   afterEach(() => {
     infoSpy.mockRestore();
@@ -101,7 +101,9 @@ describe('ZLogging', () => {
       const logError = jest.fn<(context: RequestContext<LoggerMeans<ZLogger>>) => void>();
 
       expect(await processor(handler, { logError })({}).catch(asis)).toBe(error);
-      expect(logError).toHaveBeenCalledWith(expect.objectContaining({ error }));
+      expect(logError).toHaveBeenCalledWith(
+        expect.objectContaining({ error }) as unknown as RequestContext<LoggerMeans<ZLogger>>,
+      );
       expect(errorSpy).not.toHaveBeenCalled();
     });
   });
