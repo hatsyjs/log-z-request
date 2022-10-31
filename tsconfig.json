@@ -14,7 +14,7 @@
     "noEmitHelpers": true,
     "allowSyntheticDefaultImports": true,
     "lib": ["ES2019"],
-    "types": ["node"],
+    "types": [],
     "outDir": "target/js",
     "sourceMap": true,
     "newLine": "LF"
