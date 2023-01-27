@@ -1,6 +1,5 @@
 {
   "entryPoints": ["src/index.ts"],
   "name": "Hatsy request logger",
-  "out": "./target/typedoc",
-  "tsconfig": "tsconfig.main.json"
+  "out": "./target/typedoc"
 }
