@@ -35,7 +35,7 @@
     "@hatsy/hatsy": "^2.5.2",
     "@jest/globals": "^29.4.1",
     "@run-z/eslint-config": "^3.3.1",
-    "@run-z/log-z": "^2.1.1",
+    "@run-z/log-z": "^2.2.0",
     "@run-z/rollup-helpers": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.49.0",
