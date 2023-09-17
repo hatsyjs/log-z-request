@@ -28,11 +28,11 @@
     "@proc7ts/primitives": "^4.0.1"
   },
   "peerDependencies": {
-    "@hatsy/hatsy": "^3.0.0-pre.0",
+    "@hatsy/hatsy": "^3.0.0",
     "@run-z/log-z": "^3.0.0"
   },
   "devDependencies": {
-    "@hatsy/hatsy": "^3.0.0-pre.0",
+    "@hatsy/hatsy": "^3.0.0",
     "@jest/globals": "^29.7.0",
     "@proc7ts/async": "^2.1.0",
     "@run-z/eslint-config": "^3.5.0",
