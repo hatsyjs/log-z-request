@@ -1,13 +1,14 @@
-import type { RequestContext, RequestProcessor } from '@hatsy/hatsy/core';
-import { LoggerMeans, RequestHandler, requestProcessor } from '@hatsy/hatsy/core';
+import type { RequestContext, RequestProcessor } from '@hatsy/hatsy/core.js';
+import { LoggerMeans, RequestHandler, requestProcessor } from '@hatsy/hatsy/core.js';
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
+import { PromiseResolver } from '@proc7ts/async';
 import { consoleLogger, processingLogger } from '@proc7ts/logger';
-import { asis, newPromiseResolver, noop, valueProvider } from '@proc7ts/primitives';
-import type { ZLogger, ZLogRecorder } from '@run-z/log-z';
-import { logZToLogger, zlogDetails, zlogINFO, ZLogLevel } from '@run-z/log-z';
+import { asis, noop, valueProvider } from '@proc7ts/primitives';
+import type { ZLogRecorder, ZLogger } from '@run-z/log-z';
+import { ZLogLevel, logZToLogger, zlogDetails, zlogINFO } from '@run-z/log-z';
 import type { Mock } from 'jest-mock';
-import type { RequestZLogConfig } from './logging';
-import { ZLogging } from './logging';
+import type { RequestZLogConfig } from './logging.js';
+import { ZLogging } from './logging.js';
 
 describe('ZLogging', () => {
   let infoSpy: Mock<(...args: unknown[]) => void>;
@@ -23,19 +24,19 @@ describe('ZLogging', () => {
   });
 
   it('logs nothing until error logged', async () => {
-    const whenLogged1 = newPromiseResolver<boolean>();
-    const whenLogged2 = newPromiseResolver<boolean>();
+    const whenLogged1 = new PromiseResolver<boolean>();
+    const whenLogged2 = new PromiseResolver<boolean>();
     const handler: RequestHandler<LoggerMeans<ZLogger>> = async ({ log }) => {
       log.info('Info');
       whenLogged1.resolve(log.whenLogged());
-      await whenLogged2.promise();
+      await whenLogged2.whenDone();
       log.error('Error');
       await log.whenLogged();
     };
 
     const promise = processor(handler)({});
 
-    await whenLogged1.promise();
+    await whenLogged1.whenDone();
 
     expect(infoSpy).not.toHaveBeenCalled();
 
@@ -46,19 +47,19 @@ describe('ZLogging', () => {
     expect(errorSpy).toHaveBeenCalledWith('Error');
   });
   it('allows to trigger immediate logging', async () => {
-    const whenLogged1 = newPromiseResolver<boolean>();
-    const whenLogged2 = newPromiseResolver<boolean>();
+    const whenLogged1 = new PromiseResolver<boolean>();
+    const whenLogged2 = new PromiseResolver<boolean>();
     const handler: RequestHandler<LoggerMeans<ZLogger>> = async ({ log }) => {
       log.info('Deferred');
       whenLogged1.resolve(log.whenLogged());
-      await whenLogged2.promise();
+      await whenLogged2.whenDone();
       log.info('Immediate', zlogDetails({ immediate: true }));
       await log.whenLogged();
     };
 
     const promise = processor(handler)({});
 
-    await whenLogged1.promise();
+    await whenLogged1.whenDone();
 
     expect(infoSpy).not.toHaveBeenCalled();
 
@@ -69,17 +70,17 @@ describe('ZLogging', () => {
     expect(infoSpy).toHaveBeenCalledWith('Immediate');
   });
   it('triggers immediate logging on error', async () => {
-    const whenLogged = newPromiseResolver<boolean>();
-    const whenError = newPromiseResolver();
+    const whenLogged = new PromiseResolver<boolean>();
+    const whenError = new PromiseResolver();
     const handler: RequestHandler<LoggerMeans<ZLogger>> = async ({ log }) => {
       log.info('Deferred');
       whenLogged.resolve(log.whenLogged());
-      await whenError.promise();
+      await whenError.whenDone();
     };
 
     const promise = processor(handler, { by: logZToLogger(processingLogger(consoleLogger)) })({});
 
-    await whenLogged.promise();
+    await whenLogged.whenDone();
 
     expect(infoSpy).not.toHaveBeenCalled();
 

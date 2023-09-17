@@ -1,6 +1,6 @@
 {
   "name": "@hatsy/log-z-request",
-  "version": "3.0.1",
+  "version": "4.0.0-pre.0",
   "description": "Hatsy request logger",
   "keywords": [
     "http-middleware",
@@ -24,18 +24,19 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@proc7ts/logger": "^1.3.2",
-    "@proc7ts/primitives": "^3.0.2"
+    "@proc7ts/logger": "^2.0.0",
+    "@proc7ts/primitives": "^4.0.1"
   },
   "peerDependencies": {
-    "@hatsy/hatsy": "^2.5.3",
-    "@run-z/log-z": "^2.2.1"
+    "@hatsy/hatsy": "^3.0.0",
+    "@run-z/log-z": "^3.0.0"
   },
   "devDependencies": {
-    "@hatsy/hatsy": "^2.5.3",
+    "@hatsy/hatsy": "^3.0.0",
     "@jest/globals": "^29.7.0",
+    "@proc7ts/async": "^2.1.0",
     "@run-z/eslint-config": "^3.5.0",
-    "@run-z/log-z": "^2.2.1",
+    "@run-z/log-z": "^3.0.0",
     "@run-z/prettier-config": "^2.0.0",
     "@run-z/project-config": "^0.20.0",
     "@swc/core": "^1.3.85",
