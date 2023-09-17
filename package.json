@@ -1,6 +1,6 @@
 {
   "name": "@hatsy/log-z-request",
-  "version": "4.0.0-pre.0",
+  "version": "4.0.0",
   "description": "Hatsy request logger",
   "keywords": [
     "http-middleware",
