@@ -1,9 +1,9 @@
-import type { ErrorMeans, LoggerMeans, RequestContext, RequestHandler } from '@hatsy/hatsy/core';
-import { RequestCapability, requestExtension } from '@hatsy/hatsy/core';
-import type { ZLogger, ZLogLevel, ZLogRecorder } from '@run-z/log-z';
+import type { ErrorMeans, LoggerMeans, RequestContext, RequestHandler } from '@hatsy/hatsy/core.js';
+import { RequestCapability, requestExtension } from '@hatsy/hatsy/core.js';
+import type { ZLogLevel, ZLogRecorder, ZLogger } from '@run-z/log-z';
 import { logZ, logZAtopOf, logZBy } from '@run-z/log-z';
-import { errorLoggingHandler } from './error-logging.handler.impl';
-import { logZRequest } from './request.log.impl';
+import { errorLoggingHandler } from './error-logging.handler.impl.js';
+import { logZRequest } from './request.log.impl.js';
 
 /**
  * Logger configuration.

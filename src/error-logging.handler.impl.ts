@@ -1,8 +1,8 @@
-import type { ErrorMeans, LoggerMeans, RequestContext, RequestHandler } from '@hatsy/hatsy/core';
-import { requestExtension } from '@hatsy/hatsy/core';
+import type { ErrorMeans, LoggerMeans, RequestContext, RequestHandler } from '@hatsy/hatsy/core.js';
+import { requestExtension } from '@hatsy/hatsy/core.js';
 import type { ZLogger } from '@run-z/log-z';
 import { zlogDetails } from '@run-z/log-z';
-import type { RequestZLogConfig } from './logging';
+import type { RequestZLogConfig } from './logging.js';
 
 /**
  * @internal

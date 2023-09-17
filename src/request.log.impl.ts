@@ -1,6 +1,6 @@
 import type { ZLogMessage, ZLogRecorder } from '@run-z/log-z';
 import { ZLogLevel } from '@run-z/log-z';
-import type { RequestZLogConfig } from './logging';
+import type { RequestZLogConfig } from './logging.js';
 
 /**
  * @internal
