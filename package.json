@@ -25,7 +25,7 @@
   "sideEffects": false,
   "dependencies": {
     "@proc7ts/logger": "^2.0.0",
-    "@proc7ts/primitives": "@proc7ts/primitives@^4.0.0"
+    "@proc7ts/primitives": "^4.0.0"
   },
   "peerDependencies": {
     "@hatsy/hatsy": "^3.0.0",
@@ -34,7 +34,7 @@
   "devDependencies": {
     "@hatsy/hatsy": "^3.0.0",
     "@jest/globals": "^29.7.0",
-    "@proc7ts/async": "@proc7ts/async@^2.0.0",
+    "@proc7ts/async": "^2.0.0",
     "@run-z/eslint-config": "^3.5.0",
     "@run-z/log-z": "^3.0.0",
     "@run-z/prettier-config": "^2.0.0",
