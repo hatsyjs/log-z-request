@@ -6,13 +6,12 @@ import { consoleLogger, processingLogger } from '@proc7ts/logger';
 import { asis, noop, valueProvider } from '@proc7ts/primitives';
 import type { ZLogRecorder, ZLogger } from '@run-z/log-z';
 import { ZLogLevel, logZToLogger, zlogDetails, zlogINFO } from '@run-z/log-z';
-import type { Mock } from 'jest-mock';
 import type { RequestZLogConfig } from './logging.js';
 import { ZLogging } from './logging.js';
 
 describe('ZLogging', () => {
-  let infoSpy: Mock<(...args: unknown[]) => void>;
-  let errorSpy: Mock<(...args: unknown[]) => void>;
+  let infoSpy: jest.Mock<(...args: unknown[]) => void>;
+  let errorSpy: jest.Mock<(...args: unknown[]) => void>;
 
   beforeEach(() => {
     infoSpy = jest.spyOn(consoleLogger, 'info').mockImplementation(noop) as typeof infoSpy;

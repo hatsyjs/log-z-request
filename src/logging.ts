@@ -91,8 +91,8 @@ export interface ZLogging<TInput = unknown>
  */
 class ZLoggingCapability<TInput>
   extends RequestCapability<TInput, LoggerMeans<ZLogger>>
-  implements ZLogging<TInput> {
-
+  implements ZLogging<TInput>
+{
   readonly for: <TMeans extends TInput>(
     handler: RequestHandler<TMeans & LoggerMeans<ZLogger>>,
   ) => RequestHandler<TMeans>;
@@ -106,7 +106,8 @@ class ZLoggingCapability<TInput>
     this.for =
       <TMeans extends TInput>(
         handler: RequestHandler<TMeans & LoggerMeans<ZLogger>>,
-      ): RequestHandler<TMeans> => async context => {
+      ): RequestHandler<TMeans> =>
+      async context => {
         const log = logZBy(
           logZRequest(config, forRequest(globalLogger, context as RequestContext<TInput>)),
         );
@@ -125,7 +126,6 @@ class ZLoggingCapability<TInput>
   with<TNewInput>(config: RequestZLogConfig<TNewInput> = {}): ZLogging<TNewInput> {
     return new ZLoggingCapability(config);
   }
-
 }
 
 /**

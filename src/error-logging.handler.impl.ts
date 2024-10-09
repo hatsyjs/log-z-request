@@ -15,7 +15,8 @@ export function errorLoggingHandler<TInput>(
     ? config.logError.bind(config)
     : logImmediately;
 
-  return (context: RequestContext<TInput & LoggerMeans<ZLogger>>) => context.next(handler).catch(async error => {
+  return (context: RequestContext<TInput & LoggerMeans<ZLogger>>) =>
+    context.next(handler).catch(async error => {
       await context.next(
         logError,
         requestExtension<TInput & LoggerMeans<ZLogger>, ErrorMeans>({ error }),
